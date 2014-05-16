@@ -1,0 +1,4 @@
+#!/bin/bash
+nohup java -Dlog4j.configuration=file://$PWD/log4j.properties -Dconfig.file=./application.conf -Djava.library.path=./sigar/ -jar caracaldb-server.jar &> nohup.out &
+eval 'echo $!' >> caracal.pid
+
