@@ -20,11 +20,10 @@ base_name = File.basename(base_package_filename, ".zip")
 bash 'extract-caracaldb' do
   user "root"
   code <<-EOH
-#	tar -xf #{cached_package_filename} 
-        unzip #{cached_package_filename} 
-        mv caracaldb/server/* #{node[:caracaldb][:home]}
-        mv caracaldb/rest-api #{node[:caracaldb][:home]}
-        mv caracaldb/web #{node[:caracaldb][:home]}
+	tar -xf #{cached_package_filename} 
+        mv server/* #{node[:caracaldb][:home]}
+        mv rest-api #{node[:caracaldb][:home]}
+        mv web #{node[:caracaldb][:home]}
         chown -RL #{node[:caracaldb][:user]} #{node[:caracaldb][:home]}
 
 	EOH
