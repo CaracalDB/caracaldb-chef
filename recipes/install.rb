@@ -20,7 +20,7 @@ base_name = File.basename(base_package_filename, ".tgz")
 bash 'extract-caracaldb' do
   user "root"
   code <<-EOH
-	tar -xf #{cached_package_filename} 
+	tar -xzf #{cached_package_filename} 
         mv server/* #{node[:caracaldb][:home]}
         mv rest-api #{node[:caracaldb][:home]}
         mv web #{node[:caracaldb][:home]}
