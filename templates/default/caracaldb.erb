@@ -10,8 +10,8 @@
 ### END INIT INFO
 
 # Variables
-START_PROG=<%= "#{node[:caracaldb][:base_dir]}/caracaldb-start.sh" %>
-STOP_PROG=<%= "#{node[:caracaldb][:base_dir]}/caracaldb-stop.sh" %>
+START_PROG=<%= "#{node[:caracaldb][:bin_dir]}/caracaldb-start.sh" %>
+STOP_PROG=<%= "#{node[:caracaldb][:bin_dir]}/caracaldb-stop.sh" %>
 
 
 RETVAL=0

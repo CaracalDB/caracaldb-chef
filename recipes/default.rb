@@ -80,3 +80,14 @@ template "#{node[:caracaldb][:bin_dir]}/caracaldb-stop.sh" do
 end
 
 
+if [:caracaldb][:hopagent] == true 
+
+  hopagent_config "caracaldb" do
+    service "caracaldb"
+    start_script "#{node[:caracaldb][:bin_dir]}/caracaldb-start.sh"
+    stop_script "#{node[:caracaldb][:bin_dir]}/caracaldb-stop.sh"
+    log_file "#{node[:caracaldb][:logs_dir]}/caracaldb_out.log"
+    pid_file "#{node[:caracaldb][:logs_dir]}/caracaldb.pid"
+  end
+
+end
