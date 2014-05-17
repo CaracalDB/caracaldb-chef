@@ -1,0 +1,8 @@
+caracal.bootVNodes = 20 // avg vnodes per host
+caracal.database.type = "leveldb" // alternatively "memory"
+caracal.heartbeatInterval = "60s" // leave at 60s for now, not completely implemented, yet
+server.address.hostname = "<%= node['fqdn'] %>"
+server.address.port = 12345
+bootstrap.address.hostname = "<%= @boot_ip %>"
+bootstrap.address.port = "<%= @boot_port %>"
+caracal.bootThreshold = "<%= node[:caracaldb][:num_nodes_wait_start] %>"

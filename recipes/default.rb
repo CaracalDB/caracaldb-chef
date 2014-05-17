@@ -1,34 +1,42 @@
 
-group node[:hop][:group] do
+group node[:caracaldb][:group] do
   action :create
 end
 
-user node[:hop][:user] do
+user node[:caracaldb][:user] do
   supports :manage_home => true
   action :create
-  home "/home/#{node[:hop][:user]}"
+  home "/home/#{node[:caracaldb][:user]}"
   system true
   shell "/bin/bash"
 end
 
-group node[:hop][:group] do
+group node[:caracaldb][:group] do
   action :modify
-  members node[:hop][:user]
+  members node[:caracaldb][:user]
   append true
 end
 
 
-directory node[:hop][:dir] do
-  owner node[:hop][:user]
-  group node[:hop][:group]
+directory node[:caracaldb][:dir] do
+  owner node[:caracaldb][:user]
+  group node[:caracaldb][:group]
   mode "0755"
   recursive true
   action :create
 end
 
-directory node[:hop][:home] do
-  owner node[:hop][:user]
-  group node[:hop][:group]
+directory node[:caracaldb][:home] do
+  owner node[:caracaldb][:user]
+  group node[:caracaldb][:group]
+  mode "0755"
+  recursive true
+  action :create
+end
+
+directory node[:caracaldb][:bin_dir] do
+  owner node[:caracaldb][:user]
+  group node[:caracaldb][:group]
   mode "0755"
   recursive true
   action :create
@@ -44,6 +52,7 @@ end
 
 my_ip = my_private_ip()
 
+boot_ip = private_recipe_ip("caracaldb", "bootstrap")
 
 template "application.conf" do
   source "application.conf.erb"
@@ -51,8 +60,23 @@ template "application.conf" do
   group node[:caracaldb][:group]
   mode "755"
   variables({
-#              :listNNs => allNNs
+              :boot_ip => boot_ip,
+              :boot_port => node[:caracaldb][:bootstrap][:port]
             })
+end
+
+template "#{node[:caracaldb][:bin_dir]}/caracaldb-start.sh" do
+  source "caracaldb-start.sh.erb"
+  owner node[:caracaldb][:user]
+  group node[:caracaldb][:group]
+  mode "755"
+end
+
+template "#{node[:caracaldb][:bin_dir]}/caracaldb-stop.sh" do
+  source "caracaldb-stop.sh.erb"
+  owner node[:caracaldb][:user]
+  group node[:caracaldb][:group]
+  mode "755"
 end
 
 

@@ -1,5 +1,5 @@
-node.default['java']['jdk_version'] = 7
-node.default['java']['install_flavor'] = "openjdk"
+node.default['java']['jdk_version'] = 8
+node.default['java']['install_flavor'] = "oracle"
 
 include_recipe "java"
 

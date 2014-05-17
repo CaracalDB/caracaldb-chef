@@ -4,9 +4,15 @@ default[:caracaldb][:user]                    = "caracal"
 default[:caracaldb][:group]                   = "caracal"
 default[:caracaldb][:dir]                     = "/srv"
 default[:caracaldb][:home]                    = "#{default[:caracaldb][:dir]}/caracaldb-#{default[:caracaldb][:version]}"
-default[:caracaldb][:download_url]            = "http://cloud7.sics.se/caracaldb-#{default[:caracaldb][:version]}.tgz"
+default[:caracaldb][:bin_dir]                 = "#{default[:caracaldb][:home]}/bin"
 default[:caracaldb][:logs_dir]                = "#{default[:caracaldb][:home]}/logs"
 default[:caracaldb][:conf_dir]                = "#{default[:caracaldb][:home]}"
 
-default[:caracaldb][:bootstrap][:public_ips]  = ['10.0.2.15']
-default[:caracaldb][:bootstrap][:private_ips] = ['10.0.2.15']
+default[:caracaldb][:bootstrap][:public_ips]  = ['192.168.33.11']
+default[:caracaldb][:bootstrap][:private_ips] = ['192.168.33.11']
+
+default[:caracaldb][:bootstrap][:port]        = 9876
+
+default[:caracaldb][:num_nodes_wait_start]    = 3
+
+default[:caracaldb][:download_url]            = "http://cloud7.sics.se/caracaldb-#{default[:caracaldb][:version]}.tgz"
