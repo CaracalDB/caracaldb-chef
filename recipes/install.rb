@@ -21,9 +21,9 @@ bash 'extract-caracaldb' do
   user "root"
   code <<-EOH
 	tar -xzf #{cached_package_filename} 
-        mv server/* #{node[:caracaldb][:home]}
-        mv rest-api #{node[:caracaldb][:home]}
-        mv web #{node[:caracaldb][:home]}
+        cp -rf server/* #{node[:caracaldb][:home]}
+        cp -rf rest-api #{node[:caracaldb][:home]}
+        cp -rf web #{node[:caracaldb][:home]}
         chown -RL #{node[:caracaldb][:user]} #{node[:caracaldb][:home]}
 
 	EOH
