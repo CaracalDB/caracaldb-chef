@@ -80,7 +80,7 @@ template "#{node[:caracaldb][:bin_dir]}/caracaldb-stop.sh" do
 end
 
 
-if [:caracaldb][:hopagent] == true 
+if node[:caracaldb][:hopagent] == true 
 
   hopagent_config "caracaldb" do
     service "caracaldb"

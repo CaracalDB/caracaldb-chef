@@ -16,13 +16,16 @@ remote_file cached_package_filename do
   action :create_if_missing
 end
 
-base_name = File.basename(base_package_filename, ".tgz")
+base_name = File.basename(base_package_filename, ".zip")
 bash 'extract-caracaldb' do
   user "root"
   code <<-EOH
-	tar -xf #{cached_package_filename} 
-        mv caracaldb/* #{node[:caracaldb][:home]}
-# chown -L : traverse symbolic links
+#	tar -xf #{cached_package_filename} 
+        unzip #{cached_package_filename} 
+        mv caracaldb/server/* #{node[:caracaldb][:home]}
+        mv caracaldb/rest-api #{node[:caracaldb][:home]}
+        mv caracaldb/web #{node[:caracaldb][:home]}
         chown -RL #{node[:caracaldb][:user]} #{node[:caracaldb][:home]}
+
 	EOH
 end
