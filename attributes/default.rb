@@ -15,7 +15,7 @@ default[:caracaldb][:bootstrap][:port]        = 9876
 
 default[:caracaldb][:num_nodes_wait_start]    = 3
 
-default[:caracaldb][:download_url]            = "http://cloud7.sics.se/caracal/caracal.tgz"
+default[:caracaldb][:download_url]            = "http://cloud7.sics.se/caracal/caracaldb.tgz"
 
 default[:caracaldb][:hopagent]                = false
 

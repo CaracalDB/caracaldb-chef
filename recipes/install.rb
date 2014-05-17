@@ -16,7 +16,7 @@ remote_file cached_package_filename do
   action :create_if_missing
 end
 
-base_name = File.basename(base_package_filename, ".zip")
+base_name = File.basename(base_package_filename, ".tgz")
 bash 'extract-caracaldb' do
   user "root"
   code <<-EOH
