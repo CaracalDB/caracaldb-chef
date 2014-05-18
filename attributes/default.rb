@@ -4,8 +4,11 @@ default[:caracaldb][:user]                    = "caracal"
 default[:caracaldb][:group]                   = "caracal"
 default[:caracaldb][:dir]                     = "/srv"
 default[:caracaldb][:home]                    = "#{default[:caracaldb][:dir]}/caracaldb-#{default[:caracaldb][:version]}"
+default[:caracaldb][:server_home]             = "#{default[:caracaldb][:home]}/server"
+default[:caracaldb][:restapi_home]            = "#{default[:caracaldb][:home]}/rest-api"
+default[:caracaldb][:web_home]                = "#{default[:caracaldb][:home]}/web"
 default[:caracaldb][:bin_dir]                 = "#{default[:caracaldb][:home]}/bin"
-default[:caracaldb][:logs_dir]                = "#{default[:caracaldb][:home]}/logs"
+default[:caracaldb][:log_dir]                 = "#{default[:caracaldb][:home]}/log"
 default[:caracaldb][:conf_dir]                = "#{default[:caracaldb][:home]}"
 
 default[:caracaldb][:bootstrap][:public_ips]  = ['192.168.33.11']

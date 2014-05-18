@@ -9,7 +9,7 @@ if [ $# -gt 0 ] ;then
   fi
 fi
 
-PID_FILE=<%= "#{node[:caracaldb][:log_dir]}/caracaldb.pid" %> 
+PID_FILE=<%= "#{node[:caracaldb][:log_dir]}/caracaldb-server.pid" %> 
 PID=`cat $PID_FILE`
 
 echo "Killing caracaldb with process-id $PID "
