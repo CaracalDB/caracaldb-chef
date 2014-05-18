@@ -1,4 +1,4 @@
 #!/bin/bash
-java -Dlog4j.configuration=<%= #{node[:caracaldb][:server_home]}/log4j.properties -Dconfig.file=#{node[:caracaldb][:conf_dir]}/server.conf -Djava.library.path=#{node[:caracaldb][:server_home]}/sigar -jar caracaldb-server.jar > #{node[:caracaldb][:log_dir]}/caracaldb-out.log &
-eval 'echo $!' >> #{node[:caracaldb][:log_dir]}/caracal-server.pid
+java -Dlog4j.configuration=<%= node[:caracaldb][:server_home] %>/log4j.properties -Dconfig.file=<%=node[:caracaldb][:conf_dir] %>/server.conf -Djava.library.path=<%= node[:caracaldb][:server_home]} %>/sigar -jar caracaldb-server.jar > <%= node[:caracaldb][:log_dir] %>/caracaldb-out.log &
+eval 'echo $!' >> <%= node[:caracaldb][:log_dir] %>/caracal-server.pid
 
