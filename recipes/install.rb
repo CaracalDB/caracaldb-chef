@@ -8,6 +8,7 @@ group node[:caracaldb][:group] do
 end
 
 user node[:caracaldb][:user] do
+  gid node[:caracaldb][:group]
   supports :manage_home => true
   action :create
   home "/home/#{node[:caracaldb][:user]}"
