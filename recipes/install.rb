@@ -47,8 +47,7 @@ directory node[:caracaldb][:bin_dir] do
   action :create
 end
 
-
-directory node[:caracaldb][:logs_dir] do
+directory node[:caracaldb][:log_dir] do
   owner node[:caracaldb][:user]
   group node[:caracaldb][:group]
   mode "0755"
@@ -74,7 +73,8 @@ bash 'extract-caracaldb' do
   user "root"
   code <<-EOH
 	tar -xzf #{cached_package_filename} 
-        cp -rf * #{node[:caracaldb][:home]}
-        chown -RL #{node[:caracaldb][:user]} #{node[:caracaldb][:home]}
+        cp -rf caracaldb/* #{node[:caracaldb][:home]}
+        chown -R #{node[:caracaldb][:user]} #{node[:caracaldb][:home]}
+#        touch #{Chef::Config[:file_cache_path]}/.caracaldb_downloaded
 	EOH
 end
