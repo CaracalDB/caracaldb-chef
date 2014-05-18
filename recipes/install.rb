@@ -54,6 +54,13 @@ directory node[:caracaldb][:log_dir] do
   action :create
 end
 
+directory node[:caracaldb][:conf_dir] do
+  owner node[:caracaldb][:user]
+  group node[:caracaldb][:group]
+  mode "0755"
+  action :create
+end
+
 
 package_url = node[:caracaldb][:download_url]
 Chef::Log.info "Downloading hadoop binaries from #{package_url}"

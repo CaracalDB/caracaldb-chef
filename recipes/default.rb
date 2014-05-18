@@ -3,7 +3,7 @@ my_ip = my_private_ip()
 
 boot_ip = private_recipe_ip("caracaldb", "bootstrap")
 
-template "application.conf" do
+template "#{node[:caracaldb][:conf_dir]}/server.conf" do
   source "application.conf.erb"
   owner node[:caracaldb][:user]
   group node[:caracaldb][:group]

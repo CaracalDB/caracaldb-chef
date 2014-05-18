@@ -9,7 +9,7 @@ default[:caracaldb][:restapi_home]            = "#{default[:caracaldb][:home]}/r
 default[:caracaldb][:web_home]                = "#{default[:caracaldb][:home]}/web"
 default[:caracaldb][:bin_dir]                 = "#{default[:caracaldb][:home]}/bin"
 default[:caracaldb][:log_dir]                 = "#{default[:caracaldb][:home]}/log"
-default[:caracaldb][:conf_dir]                = "#{default[:caracaldb][:home]}"
+default[:caracaldb][:conf_dir]                = "#{default[:caracaldb][:home]}/conf"
 
 default[:caracaldb][:bootstrap][:public_ips]  = ['192.168.33.11']
 default[:caracaldb][:bootstrap][:private_ips] = ['192.168.33.11']
