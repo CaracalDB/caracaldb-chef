@@ -3,16 +3,13 @@ libpath = File.expand_path '../../../kagent/libraries', __FILE__
 node.default['java']['jdk_version'] = 7
 include_recipe "java"
 
-group node[:caracaldb][:group] do
-  action :create
-end
-
 user node[:caracaldb][:user] do
   action :create
   system true
   shell "/bin/bash"
-  not_if "getent passwd #{node[:caracaldb]['user']}"
+#  not_if "getent passwd #{node[:caracaldb]['user']}"
 end
+
 
 # See ark resource here: https://github.com/burtlo/ark
 # It will: fetch it to to /var/cache/chef/
