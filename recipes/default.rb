@@ -1,3 +1,11 @@
+bash "caracaldb_start" do
+    user "root"
+    code <<-EOF
 
-master_private_ip = private_recipe_ip("caracaldb","master")
+    #{node[:caracaldb][:version_dir]}/caracal_start.sh
+#touch #{node[:caracaldb][:version_dir]}/.started
+EOF
+#  not_if { ::File.exists?( "#{node[:caracaldb][:version_dir]}/.installed" ) }
+end
+
 

@@ -32,10 +32,10 @@ private_ip = my_private_ip()
 # returns the first caracaldb::bootstrap private_ip in the list
 bootstrap_private_ip = private_recipe_ip("caracaldb","bootstrap")
 
-# file "#{node[:caracaldb][:version_dir]}/application.conf" do
-#   owner node[:hdfs][:user]
-#   action :delete
-# end
+file "#{node[:caracaldb][:version_dir]}/application.conf" do
+  owner node[:caracaldb][:user]
+  action :delete
+end
 
 
 template "#{node[:caracaldb][:version_dir]}/application.conf" do

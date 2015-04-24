@@ -23,6 +23,8 @@ suites:
     run_list:
       - recipe[kagent::install]
       - recipe[caracaldb::install]
+      - recipe[caracaldb::bootstrap]
+#      - recipe[caracaldb::datanode]
 
     attributes:
          caracaldb:
@@ -31,6 +33,7 @@ suites:
             bootstrap:
                 private_ips: ["10.0.2.15"]
                 public_ips: ["10.0.2.15"]
+                port: 55555
             datanode:
                 private_ips: ["10.0.2.15"]
                 public_ips: ["10.0.2.15"]
