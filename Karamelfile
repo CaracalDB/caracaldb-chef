@@ -1,0 +1,14 @@
+dependencies:
+  - recipe: caracaldb::install
+  - recipe: caracaldb::default
+    local:
+      - caracaldb::install
+  - recipe: caracaldb::master
+    local:
+      - caracaldb::install
+  - recipe: caracaldb::slave
+    local:
+      - caracaldb::install
+    global:
+      - caracaldb::master
+

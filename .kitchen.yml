@@ -1,16 +1,45 @@
 ---
 driver:
   name: vagrant
+  customize:
+    memory: 6000
+    cpuexecutioncap: 90
+    cpus: 2
+    natdnshostresolver1: "on"
+    natdnsproxy1: "on"
 
 provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.4
+#  - name: ubuntu-14.04
+  - name: centos-6.5
+
+suites:
+  - name: default
 
 suites:
   - name: default
     run_list:
-      - recipe[caracaldb::default]
+      - recipe[kagent::install]
+      - recipe[caracaldb::install]
+      - recipe[caracaldb::bootstrap]
+#      - recipe[caracaldb::datanode]
+
     attributes:
+         caracaldb:
+            private_ips: ["10.0.2.15"]
+            public_ips: ["10.0.2.15"]
+            bootstrap:
+                private_ips: ["10.0.2.15"]
+                public_ips: ["10.0.2.15"]
+                port: 55555
+            datanode:
+                private_ips: ["10.0.2.15"]
+                public_ips: ["10.0.2.15"]
+         kagent:
+            private_ips: ["10.0.2.15"]
+            public_ips: ["10.0.2.15"]
+         private_ips: ["10.0.2.15"]
+         public_ips: ["10.0.2.15"]
+         vagrant: "enabled"
