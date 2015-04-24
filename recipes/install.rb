@@ -29,20 +29,9 @@ end
    owner node[:caracaldb][:user]
  end
 
+# Get the private-ip of this machine
 private_ip = my_private_ip()
-public_ip = my_public_ip()
-
-bash "caracaldb_install_bash" do
-    user "root"
-    code <<-EOF
-
-# Do something here...
-
-touch #{node[:caracaldb][:version_dir]}/.installed
-EOF
-  not_if { ::File.exists?( "#{node[:caracaldb][:version_dir]}/.installed" ) }
-end
-
+# public_ip = my_public_ip()
 # returns the first caracaldb::bootstrap private_ip in the list
 bootstrap_private_ip = private_recipe_ip("caracaldb","bootstrap")
 

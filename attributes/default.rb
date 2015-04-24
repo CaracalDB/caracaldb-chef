@@ -6,7 +6,7 @@ default[:caracaldb][:url] = "http://cloud7.sics.se/caracal/caracal-#{node[:carac
 default[:caracaldb][:user] = "caracaldb"
 default[:caracaldb][:group] = "caracaldb"
 
-default[:caracaldb][:version_dir] = "/usr/local/caracaldb-#{node[:caracaldb][:version]"
+default[:caracaldb][:version_dir] = "/usr/local/caracaldb-#{node[:caracaldb][:version]}"
 default[:caracaldb][:home_dir] = "/usr/local/caracaldb"
 
 default[:caracaldb][:bootstrap][:port] = 
