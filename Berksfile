@@ -2,7 +2,7 @@ source "https://api.berkshelf.com"
 
 metadata
 
-cookbook 'kagent', github: 'karamelchef/kagent-chef', branch: 'master'
-cookbook 'ark', github: 'burtlo/ark', version: "~> 0.9.0"
+cookbook 'kagent', github: 'karamelchef/kagent-chef'
+cookbook 'ark'
 cookbook 'java'
 
